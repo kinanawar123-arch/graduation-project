@@ -1,0 +1,1070 @@
+%========================================================
+% PTUK GRADUATION PROJECT REPORT
+% Project: Ardi - أرضي
+%========================================================
+
+\documentclass[12pt,a4paper,oneside]{report}
+
+%========================================================
+% PACKAGES
+%========================================================
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+
+\usepackage[
+    a4paper,
+    top=2.5cm,
+    bottom=2.5cm,
+    left=3cm,
+    right=2.5cm,
+    headheight=18pt,
+    headsep=0.6cm,
+    footskip=1.2cm
+]{geometry}
+
+\usepackage{graphicx}
+\usepackage{float}
+
+\usepackage{xcolor}
+\usepackage{colortbl}
+
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{multirow}
+
+\usepackage{setspace}
+\usepackage{enumitem}
+
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{tocloft}
+
+\usepackage{fancyhdr}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{bookmark}
+
+\usepackage{listings}
+\usepackage{ragged2e}
+
+%========================================================
+% LANGUAGE SETTINGS
+%========================================================
+
+\setdefaultlanguage{english}
+\setotherlanguage{arabic}
+
+% English font
+\setmainfont{TeX Gyre Termes}
+
+% Arabic body text
+\newfontfamily\arabicfont[
+    Script=Arabic,
+    Scale=1.08
+]{Noto Naskh Arabic}
+
+% Arabic title only
+\newfontfamily\ardititlefont[
+    Script=Arabic,
+    Scale=1.05
+]{Noto Kufi Arabic}
+
+%========================================================
+% ARDI GREEN THEME
+%========================================================
+
+\definecolor{ArdiGreen}{RGB}{0,102,51}
+\definecolor{ArdiDarkGreen}{RGB}{0,82,41}
+\definecolor{ArdiLightGreen}{RGB}{226,239,218}
+\definecolor{ArdiVeryLightGreen}{RGB}{242,249,245}
+
+\definecolor{HeaderGray}{HTML}{666666}
+\definecolor{FooterGray}{HTML}{888888}
+\definecolor{LightGray}{HTML}{CCCCCC}
+
+%========================================================
+% GLOBAL DOCUMENT SETTINGS
+%========================================================
+
+\onehalfspacing
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\setlist[itemize]{
+    leftmargin=1.5em,
+    itemsep=3pt,
+    topsep=5pt
+}
+
+\setlist[enumerate]{
+    leftmargin=1.8em,
+    itemsep=3pt,
+    topsep=5pt
+}
+
+\justifying
+
+%========================================================
+% HYPERLINK SETTINGS
+%========================================================
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=ArdiGreen,
+    citecolor=ArdiGreen,
+    urlcolor=ArdiGreen,
+    pdfauthor={
+        Kinan Awartani,
+        Taima Abu Bshara,
+        Lujain Manasreh,
+        Zaid Rajab,
+        Amer Riad
+    },
+    pdftitle={
+        Ardi - AI-Powered Real Estate Monitoring
+        and Fraud Detection System
+    }
+}
+
+%========================================================
+% HEADER AND FOOTER
+%========================================================
+
+\pagestyle{fancy}
+
+\fancyhf{}
+
+\fancyhead[L]{
+    \fontsize{9}{11}\selectfont
+    \color{HeaderGray}
+    \textbf{PTUK --- AI Graduation Project}
+}
+
+\fancyhead[R]{
+    \fontsize{9}{11}\selectfont
+    \color{ArdiGreen}
+    \textit{Ardi}
+}
+
+\fancyfoot[L]{
+    \fontsize{9}{11}\selectfont
+    \color{FooterGray}
+    Palestine Technical University -- Kadoorie
+    \;|\;
+    Faculty of IT \& AI
+}
+
+\fancyfoot[R]{
+    \fontsize{9}{11}\selectfont
+    \color{FooterGray}
+    \thepage
+}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\renewcommand{\headrule}{
+    \hbox to\headwidth{
+        \color{LightGray}
+        \leaders\hrule height \headrulewidth\hfill
+    }
+}
+
+\renewcommand{\footrule}{
+    \hbox to\headwidth{
+        \color{LightGray}
+        \leaders\hrule height \footrulewidth\hfill
+    }
+}
+
+%========================================================
+% PLAIN PAGE STYLE
+%========================================================
+
+\fancypagestyle{plain}{
+    \fancyhf{}
+
+    \fancyhead[L]{
+        \fontsize{9}{11}\selectfont
+        \color{HeaderGray}
+        \textbf{PTUK --- AI Graduation Project}
+    }
+
+    \fancyhead[R]{
+        \fontsize{9}{11}\selectfont
+        \color{ArdiGreen}
+        \textit{Ardi}
+    }
+
+    \fancyfoot[L]{
+        \fontsize{9}{11}\selectfont
+        \color{FooterGray}
+        Palestine Technical University -- Kadoorie
+        \;|\;
+        Faculty of IT \& AI
+    }
+
+    \fancyfoot[R]{
+        \fontsize{9}{11}\selectfont
+        \color{FooterGray}
+        \thepage
+    }
+
+    \renewcommand{\headrulewidth}{0.4pt}
+    \renewcommand{\footrulewidth}{0.4pt}
+}
+
+%========================================================
+% CHAPTER STYLE
+%========================================================
+
+\titleformat{\chapter}[block]
+    {\normalfont\fontsize{22}{26}\selectfont\bfseries\color{ArdiGreen}}
+    {Chapter \thechapter:}
+    {0.5em}
+    {}
+
+\titlespacing*{\chapter}
+    {0pt}
+    {-10pt}
+    {22pt}
+
+%========================================================
+% SECTION STYLE
+%========================================================
+
+\titleformat{\section}
+    {\normalfont\fontsize{16}{19}\selectfont\bfseries\color{ArdiGreen}}
+    {\thesection}
+    {0.8em}
+    {}
+
+\titlespacing*{\section}
+    {0pt}
+    {18pt}
+    {8pt}
+
+%========================================================
+% SUBSECTION STYLE
+%========================================================
+
+\titleformat{\subsection}
+    {\normalfont\fontsize{13}{16}\selectfont\bfseries\color{ArdiGreen}}
+    {\thesubsection}
+    {0.8em}
+    {}
+
+\titlespacing*{\subsection}
+    {0pt}
+    {14pt}
+    {6pt}
+
+%========================================================
+% SUBSUBSECTION STYLE
+%========================================================
+
+\titleformat{\subsubsection}
+    {\normalfont\fontsize{12}{15}\selectfont\bfseries\color{ArdiDarkGreen}}
+    {\thesubsubsection}
+    {0.8em}
+    {}
+
+%========================================================
+% TABLE SETTINGS
+%========================================================
+
+\renewcommand{\arraystretch}{1.35}
+
+\newcolumntype{Y}{
+    >{\centering\arraybackslash}X
+}
+
+\newcolumntype{L}[1]{
+    >{\raggedright\arraybackslash}p{#1}
+}
+
+\newcolumntype{C}[1]{
+    >{\centering\arraybackslash}p{#1}
+}
+
+%========================================================
+% FIGURE AND TABLE CAPTIONS
+%========================================================
+
+\captionsetup{
+    font=small,
+    labelfont=bf,
+    justification=centering
+}
+
+\captionsetup[table]{
+    position=bottom
+}
+
+%========================================================
+% TABLE OF CONTENTS SETTINGS
+%========================================================
+
+\renewcommand{\contentsname}{Table of Contents}
+
+\setlength{\cftbeforechapskip}{6pt}
+
+\renewcommand{\cftchapfont}{
+    \bfseries
+}
+
+\renewcommand{\cftchappagefont}{
+    \bfseries
+}
+
+%========================================================
+% CODE LISTING SETTINGS
+%========================================================
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+    tabsize=4,
+    showstringspaces=false
+}
+
+%========================================================
+% PROJECT INFORMATION
+%========================================================
+
+\newcommand{\ProjectName}{Ardi}
+\newcommand{\ProjectArabicName}{أرضي}
+
+\newcommand{\ProjectFullTitle}{
+AI-Powered Real Estate Monitoring and Fraud Detection System
+}
+
+\newcommand{\UniversityName}{
+Palestine Technical University -- Kadoorie
+}
+
+\newcommand{\FacultyName}{
+Faculty of Information Technology and Artificial Intelligence
+}
+
+\newcommand{\DepartmentName}{
+Department of Artificial Intelligence
+}
+
+\newcommand{\BranchName}{
+Tulkarm Branch
+}
+
+\newcommand{\SupervisorName}{
+Dr. Areej Jaber
+}
+
+%========================================================
+% BEGIN DOCUMENT
+%========================================================
+
+\begin{document}
+
+%========================================================
+% TITLE PAGE
+%========================================================
+
+\begin{titlepage}
+
+\thispagestyle{empty}
+
+\begin{center}
+
+\vspace*{0.15cm}
+
+%--------------------------------------------------------
+% UNIVERSITY INFORMATION
+%--------------------------------------------------------
+
+{\fontsize{16}{20}\selectfont
+\textbf{\UniversityName}
+}
+
+\vspace{0.15cm}
+
+{\fontsize{14}{18}\selectfont
+\textbf{\FacultyName}
+}
+
+\vspace{0.15cm}
+
+{\fontsize{13}{17}\selectfont
+\textbf{
+\DepartmentName
+\;|\;
+\BranchName
+}
+}
+
+\vspace{0.65cm}
+
+%--------------------------------------------------------
+% UNIVERSITY LOGO
+%--------------------------------------------------------
+
+\includegraphics[
+    width=0.21\textwidth
+]{ptuk_logo.png}
+
+\vspace{0.7cm}
+
+%--------------------------------------------------------
+% PROJECT TITLE
+%--------------------------------------------------------
+
+{\fontsize{29}{35}\selectfont
+\bfseries
+\textcolor{ArdiGreen}{\ProjectName}
+}
+
+\vspace{0.08cm}
+
+{\fontsize{25}{31}\selectfont
+\bfseries
+\textcolor{ArdiGreen}{
+\textarabic{\ProjectArabicName}
+}
+}
+
+\vspace{0.35cm}
+
+{\fontsize{17}{21}\selectfont
+\bfseries
+\textcolor{ArdiDarkGreen}{
+\ProjectFullTitle
+}
+}
+
+\vspace{1cm}
+
+%--------------------------------------------------------
+% DEGREE STATEMENT
+%--------------------------------------------------------
+
+{\fontsize{12.5}{17}\selectfont
+A Graduation Project Submitted in Partial Fulfillment of the
+}
+
+\vspace{0.10cm}
+
+{\fontsize{12.5}{17}\selectfont
+Requirements for the Bachelor's Degree in Artificial Intelligence
+}
+
+\vspace{0.9cm}
+
+%--------------------------------------------------------
+% PREPARED BY TABLE
+%--------------------------------------------------------
+
+\renewcommand{\arraystretch}{1.35}
+
+\begin{tabular}{
+|>{\centering\arraybackslash}p{7cm}|
+>{\centering\arraybackslash}p{4cm}|
+}
+
+\hline
+
+\rowcolor{ArdiGreen}
+
+\textcolor{white}{
+\textbf{Prepared By}
+}
+&
+\textcolor{white}{
+\textbf{Student ID}
+}
+\\
+
+\hline
+
+\rowcolor{ArdiLightGreen}
+Kinan Awartani
+&
+202311151
+\\
+
+\hline
+
+Taima Abu Bshara
+&
+202310481
+\\
+
+\hline
+
+\rowcolor{ArdiLightGreen}
+Lujain Manasreh
+&
+202310631
+\\
+
+\hline
+
+Zaid Rajab
+&
+202310471
+\\
+
+\hline
+
+\rowcolor{ArdiLightGreen}
+Amer Riad
+&
+202220062
+\\
+
+\hline
+
+\end{tabular}
+
+\vspace{0.85cm}
+
+%--------------------------------------------------------
+% SUPERVISOR
+%--------------------------------------------------------
+
+{\fontsize{13}{17}\selectfont
+\textbf{Supervised By}
+}
+
+\vspace{0.25cm}
+
+{\fontsize{13}{17}\selectfont
+\textbf{\SupervisorName}
+}
+
+\vspace{0.10cm}
+
+{\fontsize{12}{16}\selectfont
+Department of Artificial Intelligence
+}
+
+\vfill
+
+%--------------------------------------------------------
+% ACADEMIC YEAR
+%--------------------------------------------------------
+
+{\fontsize{12}{16}\selectfont
+\textbf{
+Academic Year 2026 / 2027 --- first Semester
+}
+}
+
+\end{center}
+
+\end{titlepage}
+
+%========================================================
+% FRONT MATTER
+%========================================================
+
+\pagenumbering{roman}
+
+%========================================================
+% DECLARATION OF ORIGINALITY
+%========================================================
+
+\chapter*{Declaration of Originality}
+
+\addcontentsline{toc}{chapter}{Declaration of Originality}
+
+We hereby declare that this graduation project, titled
+``\ProjectName{} -- \ProjectFullTitle,''
+is our own original work carried out under the supervision of
+\SupervisorName{} at Palestine Technical University -- Kadoorie.
+
+We further declare that:
+
+\begin{enumerate}
+
+    \item This work has not been submitted for any other degree
+    at this or any other institution.
+
+    \item All sources and references used have been properly
+    cited and acknowledged.
+
+    \item Any assistance received from others has been duly
+    acknowledged.
+
+    \item The use of generative AI tools, if any, has been
+    disclosed and cited according to the department's
+    academic integrity policy.
+
+\end{enumerate}
+
+\vspace{1cm}
+
+\begin{center}
+
+\renewcommand{\arraystretch}{1.7}
+
+\begin{tabular}{
+|L{6cm}|
+C{3cm}|
+C{3cm}|
+}
+
+\hline
+
+\rowcolor{ArdiGreen}
+
+\textcolor{white}{\textbf{Student Name}}
+&
+\textcolor{white}{\textbf{Signature}}
+&
+\textcolor{white}{\textbf{Date}}
+\\
+
+\hline
+
+\rowcolor{ArdiVeryLightGreen}
+Kinan Awartani
+&
+KINAN
+&
+7 october 2026
+\\
+
+\hline
+
+Taima Abu Bshara
+&
+TAIMA
+&
+7 october 2026
+\\
+
+\hline
+
+\rowcolor{ArdiVeryLightGreen}
+Lujain Manasreh
+&
+LUJAIN
+&
+7 october 2026
+\\
+
+\hline
+
+Zaid Rajab
+&
+ZAID
+&
+7 october 2026
+\\
+
+\hline
+
+\rowcolor{ArdiVeryLightGreen}
+Amer Riad
+&
+AMER
+&
+7 october 2026
+\\
+
+\hline
+
+\end{tabular}
+
+\end{center}
+
+\clearpage
+
+%========================================================
+% ABSTRACT
+%========================================================
+
+\chapter*{Abstract}
+
+\addcontentsline{toc}{chapter}{Abstract}
+
+\textbf{Title:}
+\ProjectName{} -- \ProjectFullTitle
+
+\vspace{0.3cm}
+
+\textbf{Keywords:}
+Artificial Intelligence,
+Real Estate,
+Fraud Detection,
+Anomaly Detection,
+Machine Learning,
+Data Analytics
+
+\vspace{0.5cm}
+
+Ardi is an AI-powered real estate monitoring and fraud detection
+system designed to support authorities in monitoring and analysing
+property and land transactions.
+
+The system centralises real estate information including properties,
+buyers, sellers, transaction values, geographical locations,
+historical records, and transaction dates.
+
+Using data analytics and machine learning techniques, the system
+analyses historical and current transaction behaviour to detect
+unusual patterns and anomalies that may require further investigation.
+
+Rather than automatically classifying individuals or transactions as
+fraudulent, Ardi operates as a decision-support system that assigns
+an anomaly or suspicion score to unusual activities and presents the
+results to authorised users for human review.
+
+The platform also provides an interactive dashboard, geographical
+visualisation of real estate activity, and periodic reports to assist
+authorities in understanding market behaviour and identifying
+transactions that deserve further attention.
+
+\clearpage
+
+%========================================================
+% ARABIC ABSTRACT
+%========================================================
+
+\chapter*{\textarabic{الملخص}}
+
+\addcontentsline{toc}{chapter}{Arabic Abstract}
+
+\begin{Arabic}
+
+\textbf{عنوان المشروع :}
+
+\textbf{أرضي هو نظام ذكي لمراقبة العقارات واكتشاف الأنماط المحتملة للاحتيال}
+
+\vspace{0.3cm}
+
+\textbf{الكلمات المفتاحية:}
+
+الذكاء الاصطناعي،
+العقارات،
+كشف الاحتيال،
+اكتشاف الشذوذ،
+التعلم الآلي،
+تحليل البيانات
+
+\vspace{0.5cm}
+
+مشروع أرضي هو نظام ذكي قائم على تقنيات الذكاء الاصطناعي
+يهدف إلى مساعدة الجهات المختصة في مراقبة وتحليل معاملات الأراضي
+والعقارات.
+
+يقوم النظام بجمع وتنظيم بيانات العقارات والمعاملات والأطراف
+المرتبطة بها والأسعار والتواريخ والمواقع الجغرافية ضمن منصة
+مركزية، ثم يستخدم تقنيات تحليل البيانات والتعلم الآلي لتحليل
+النشاط العقاري الحالي والتاريخي واكتشاف الأنماط والسلوكيات
+غير الطبيعية التي قد تستحق المزيد من المراجعة والتحقيق.
+
+لا يقوم النظام بإصدار حكم قطعي بأن معاملة معينة احتيالية،
+بل يعمل كنظام لدعم القرار من خلال تحديد الحالات غير الطبيعية
+وإعطائها درجة اشتباه أو درجة شذوذ تساعد الموظف المختص على
+ترتيب أولويات المراجعة.
+
+كما يوفر النظام لوحة تحكم تفاعلية، وتحليلاً جغرافياً للنشاط
+العقاري، وتقارير دورية تهدف إلى تحويل البيانات الخام إلى
+معلومات ومؤشرات تساعد الجهات المختصة في عملية المراقبة
+واتخاذ القرار.
+
+\end{Arabic}
+
+\clearpage
+
+%========================================================
+% DEDICATION
+%========================================================
+
+\chapter*{Dedication}
+
+\addcontentsline{toc}{chapter}{Dedication}
+
+\vspace{2cm}
+
+\begin{center}
+
+\itshape
+
+To our families, whose endless support and patience made this work
+possible.
+
+\vspace{0.7cm}
+
+To our supervisor and professors at Palestine Technical University --
+Kadoorie who guided us throughout this journey.
+
+\vspace{0.7cm}
+
+And to Palestine.
+
+\end{center}
+
+\clearpage
+
+%========================================================
+% ACKNOWLEDGEMENTS
+%========================================================
+
+\chapter*{Acknowledgements}
+
+\addcontentsline{toc}{chapter}{Acknowledgements}
+
+We would like to express our sincere gratitude to
+\SupervisorName{} for her invaluable guidance, continuous support,
+constructive feedback, and encouragement throughout the development
+of this graduation project.
+
+We are deeply grateful to the Faculty of Information Technology and
+Artificial Intelligence at Palestine Technical University -- Kadoorie
+for providing the academic environment and resources necessary to
+complete this work.
+
+We also extend our sincere appreciation to all instructors,
+colleagues, friends, and individuals who contributed directly or
+indirectly to this project.
+
+Finally, we would like to thank our families for their continuous
+support, patience, and encouragement throughout our academic journey.
+
+\clearpage
+
+%========================================================
+% TABLE OF CONTENTS
+%========================================================
+
+\tableofcontents
+
+\clearpage
+
+%========================================================
+% LIST OF FIGURES
+%========================================================
+
+\listoffigures
+
+\addcontentsline{toc}{chapter}{List of Figures}
+
+\clearpage
+
+%========================================================
+% LIST OF TABLES
+%========================================================
+
+\listoftables
+
+\addcontentsline{toc}{chapter}{List of Tables}
+
+\clearpage
+
+%========================================================
+% MAIN MATTER
+%========================================================
+
+\pagenumbering{arabic}
+
+\setcounter{page}{1}
+
+%========================================================
+% CHAPTER 1
+%========================================================
+
+\chapter{Introduction}
+
+This chapter introduces the research problem, provides background
+context, and outlines the objectives, research questions, significance,
+scope, limitations, and overall structure of the report.
+
+%--------------------------------------------------------
+\section{Background and Motivation}
+%--------------------------------------------------------
+
+Real estate and land transactions generate large amounts of data
+related to properties, buyers, sellers, transaction values,
+geographical locations, and historical ownership records.
+
+As the number of transactions increases, manually reviewing and
+monitoring this information becomes more difficult, especially when
+data is distributed across multiple sources and systems.
+
+Artificial intelligence and data analytics provide opportunities to
+analyse historical and current real estate activity automatically,
+identify recurring patterns, and highlight unusual behaviour that may
+require additional investigation.
+
+The Ardi project is motivated by the need for a centralised intelligent
+platform that supports authorities in monitoring property transactions
+more efficiently and converting large amounts of raw transaction data
+into useful information.
+
+%--------------------------------------------------------
+\section{Problem Statement}
+%--------------------------------------------------------
+
+The increasing volume and complexity of real estate transactions make
+manual monitoring time-consuming and inefficient.
+
+A transaction may appear normal when examined independently, while a
+historical, relational, or geographical analysis may reveal unusual
+behaviour.
+
+Examples include significant changes in property prices, frequent
+transactions between the same parties, repeated resale of the same
+property within short periods, unusually high transaction activity by
+a specific person or organisation, or significant differences between
+the prices of similar properties.
+
+Identifying such patterns manually requires substantial effort and may
+be difficult when large volumes of data are involved.
+
+Therefore, there is a need for a decision-support system that can
+centralise real estate data, analyse transaction behaviour, identify
+unusual patterns, and present suspicious cases to authorised users for
+further review.
+
+%--------------------------------------------------------
+\section{Project Objectives}
+%--------------------------------------------------------
+
+The main objectives of the Ardi project are:
+
+\begin{enumerate}
+
+    \item To develop a centralised platform for managing property
+    and real estate transaction data.
+
+    \item To analyse historical and current real estate activity.
+
+    \item To apply artificial intelligence and machine learning
+    techniques for anomaly detection.
+
+    \item To identify transactions and behavioural patterns that
+    may require further review.
+
+    \item To analyse real estate activity geographically.
+
+    \item To provide an interactive dashboard containing useful
+    statistics and key performance indicators.
+
+    \item To generate daily, weekly, monthly, and yearly reports.
+
+    \item To reduce the time and effort required for manual
+    transaction monitoring.
+
+    \item To transform raw real estate data into useful information
+    that supports decision-making.
+
+\end{enumerate}
+
+%--------------------------------------------------------
+\section{Research Questions}
+%--------------------------------------------------------
+
+This project aims to answer the following research questions:
+
+\begin{enumerate}
+
+    \item How can artificial intelligence techniques be used to
+    detect unusual patterns in real estate transactions?
+
+    \item Which transaction, property, temporal, geographical, and
+    behavioural features are most useful for identifying anomalous
+    real estate activities?
+
+    \item How can anomaly detection results be presented in a way
+    that supports human review and decision-making?
+
+    \item How can geographical and historical transaction analysis
+    improve the monitoring of real estate activities?
+
+\end{enumerate}
+
+%--------------------------------------------------------
+\section{Significance of the Study}
+%--------------------------------------------------------
+
+The significance of this project lies in integrating real estate data,
+artificial intelligence, data analytics, geographical analysis,
+interactive visualisation, and automated reporting within one
+decision-support platform.
+
+Instead of relying entirely on manual inspection, authorised users can
+use Ardi to identify transactions and activities that deserve greater
+attention.
+
+The system can also provide a clearer understanding of market trends,
+transaction activity, unusual behaviour, and geographical
+concentrations.
+
+%--------------------------------------------------------
+\section{Scope and Limitations}
+%--------------------------------------------------------
+
+The scope of Ardi includes property and transaction data management,
+historical transaction analysis, anomaly detection, dashboard
+visualisation, geographical analysis, and periodic reporting.
+
+The system is intended to support authorised authorities and
+specialised employees rather than general public users.
+
+The system does not automatically determine that a person or
+transaction is fraudulent.
+
+It does not replace human investigation, legal procedures, or official
+decision-making.
+
+The quality and accuracy of the system depend on the availability,
+quality, completeness, and accuracy of the provided data.
+
+The performance of the machine learning model may also be affected by
+limited, imbalanced, or incomplete training data.
+
+%--------------------------------------------------------
+\section{Report Organisation}
+%--------------------------------------------------------
+
+The remainder of this report is organised as follows:
+
+\begin{itemize}
+
+    \item Chapter 2 presents the theoretical background, related
+    work, and research gap.
+
+    \item Chapter 3 describes the methodology, system requirements,
+    architecture, database design, data processing, and AI approach.
+
+    \item Chapter 4 presents the system implementation and
+    experimental results.
+
+    \item Chapter 5 discusses the results, strengths, limitations,
+    and challenges.
+
+    \item Chapter 6 concludes the project and presents possible
+    future improvements.
+
+\end{itemize}
+
+%========================================================
+% END DOCUMENT
+%========================================================
+
+\end{document}
